@@ -174,6 +174,11 @@ in. in is the polar opposite of out. While out allows you to use a generic subty
   
 ## A generic type can be locally contravariant 
 
+uppose, for example, that we want to be able to use a Vet<Pet> reference in place of a Vet<Cat>, but only where it’s being passed to a Contest<Cat> in its constructor. We can achieve this by removing the in prefix from the generic type in the Vet class, and adding it to the vet property in the Contest constructor instead.<br>
+Here’s the code to do this:
+  ![Screen Shot 2021-07-30 at 11 02 39 PM](https://user-images.githubusercontent.com/7098685/127728068-60786fbc-49e3-414a-bf3a-dba9d6161b98.png)
+
+  ![Screen Shot 2021-07-30 at 11 03 08 PM](https://user-images.githubusercontent.com/7098685/127728078-e9ac8231-98fb-4b69-beeb-fc524f4b3e0f.png)
 
 
   
