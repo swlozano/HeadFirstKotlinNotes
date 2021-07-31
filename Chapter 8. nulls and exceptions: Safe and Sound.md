@@ -76,3 +76,80 @@ Once you’ve established that the value is not null, you can refer to it in the
 
 ### Using let to streamline expressions
 
+Suppose you have a function named getAlphaWolf that has a return type of Wolf? like this:
+```kotlin
+fun getAlphaWolf() : Wolf? { 
+  return Wolf()
+}
+```
+
+you could do so (in most situations) using the following code:
+```kotlin
+var alpha = getAlphaWolf() if (alpha != null) {
+  alpha.eat() 
+}
+```
+
+If you were to rewrite the code using let, however, you would no longer need to create a separate variable in which to hold the function’s return value. Instead, you could use:
+![ch8_11](https://user-images.githubusercontent.com/7098685/127726005-97377bf2-72fb-449b-9a92-ad1f594d292d.png)
+
+## Instead of using an if expression...
+
+if (w != null) w.hunger else -1
+
+**...you can use the safer Elvis operator**
+w?.hunger ?: -1
+
+## The !! operator deliberately throws a NullPointerException
+![ch8_12](https://user-images.githubusercontent.com/7098685/127726105-349ce0c1-5e74-45b3-99eb-2a67af122d11.png)
+
+
+## An exception is an object of type Exception
+![ch8_13](https://user-images.githubusercontent.com/7098685/127726163-0cd494b0-8bd4-4f67-a328-988fd92ad1dd.png)
+
+You can also create your own types of exception by defining a new class with Exception as its superclass. The following code, for example, defines a new type of exception named<br>
+AnimalException:<br>
+
+```kotlin
+class AnimalException : Exception() { }
+```
+
+The safe alternative is to perform a safe cast using the as? operator using code like this: 
+```kotlin
+val wolf = r as? Wolf
+```
+This casts r as a Wolf if r holds an object of that type, and returns null if it doesn’t. This saves you from getting a ClassCastException if your assumptions about the variable’s type are
+incorrect.
+<i>as? lets you perform a safe explicit cast. If the cast fails, it returns null.</i>
+
+**You can explicitly throw exceptions**
+![ch8_14](https://user-images.githubusercontent.com/7098685/127726259-2aa0105b-80dd-4c72-bb0d-e6d6cf872538.png)
+
+## try and throw are both expressions
+Unlike in other languages such as Java, try and throw are expressions, so they can have return values.
+
+### How to use try as an expression
+![ch8_15](https://user-images.githubusercontent.com/7098685/127726310-6bddedd5-ddd7-4caa-a68a-09c06965623e.png)
+
+### How to use throw as an expression
+
+throw is also an expression, so you can, for example, use it with the Elvis operator using code like this:
+```kotlin
+val h = w?.hunger ?: throw AnimalException()
+```
+If w and hunger are not null, the above code assigns the value of w’s hunger property to a new variable named h. If, however, w or hunger are null, it throws an AnimalException.
+
+**BULLET POINTS**
+- null is a value that means a variable doesn’t hold a reference to an object. The variable exists, but it doesn’t refer to anything.
+- A nullable type can hold null values in addition to its base type. You define a type as nullable by adding a ? to the end of it.
+- To access a nullable variable’s properties and functions, you must first check that it’s not null.
+- If the compiler can’t guarantee that a variable is not null in between a null-check and its usage, you must access properties and functions using the safe call operator (?.).
+- You can chain safe calls together.
+- To execute code if (and only if) a value is not null, use ?.let.
+- The Elvis operator (?:) is a safe alternative to an if expression.
+- The not-null assertion operator (!!) throws a NullPointerException if the subject of your assertion is null.
+- An exception is a warning that occurs in exceptional situations. It’s an object of type Exception.
+- Use throw to throw an exception.
+- Catch an exception using try/catch/finally.
+- try and throw are expressions.
+- Use a safe cast (as?) to avoid getting a ClassCastException.
