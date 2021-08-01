@@ -1,1 +1,3 @@
 # Chapter 9. collections: Get Organized
+## Arrays can be useful...
+![Screen Shot 2021-08-01 at 11 47 38 AM](https://user-images.githubusercontent.com/7098685/127778937-9836a5ea-15b5-4f07-a067-febbe3b61a02.png)
