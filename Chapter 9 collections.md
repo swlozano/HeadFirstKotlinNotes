@@ -148,3 +148,71 @@ val shoppingCopy = mShopping.toList()
 ```
 
 The toList function returns a List, not a MutableList, so shoppingCopy can’t be updated. 
+
+## How to create a Set
+If you need a collection that doesn’t allow duplicates, you can use a Set: an unordered collection with no duplicate values.
+![Screen Shot 2021-08-02 at 8 34 38 AM](https://user-images.githubusercontent.com/7098685/127870252-07a5c5f9-292b-4fb3-8231-c387afca4049.png)
+
+### How to use a Set’s values
+A Set’s values are unordered, so unlike a List, there’s no get function you can use to get the value at a specified index. You can, however, still use the contains function to check whether a Set contains
+a particular value using code like this:
+![Screen Shot 2021-08-02 at 8 35 40 AM](https://user-images.githubusercontent.com/7098685/127870404-c108a8f7-9fa2-4176-9877-d06299c392c6.png)
+
+And you can also loop through a Set like this:
+```kotlin
+  for (item in friendSet) println(item)
+```
+
+A Set is immutable, so you can’t add values to it, or remove existing ones. 
+
+## How a Set checks for duplicates
+
+1. The Set gets the object’s hash code, and compares it with the hash codes of the objects already in the Set.
+![Screen Shot 2021-08-02 at 8 39 20 AM](https://user-images.githubusercontent.com/7098685/127870899-78b60fd2-add1-4b71-8ca6-40165b46393e.png)
+
+
+2. The Set uses the === operator to compare the new value against any objects it contains with the same hash code.
+![Screen Shot 2021-08-02 at 8 39 48 AM](https://user-images.githubusercontent.com/7098685/127870960-3d7ac40f-b502-4408-9d4d-125424a60462.png)
+
+3. The Set uses the == operator to compare the new value against any objects it contains with matching hash codes.
+
+![Screen Shot 2021-08-02 at 8 40 29 AM](https://user-images.githubusercontent.com/7098685/127871055-4fe13c6f-e3bf-433f-a992-3a5bfea8025a.png)
+
+## Hash codes and equality
+
+### Equality using the === operator
+If you have two references that refer to the same object, you’ll get the same result when you call the hashCode function on each reference. If you don’t override the hashCode function, the default behavior (which it inherits from the Any superclass) is that each object will get a unique hash code.
+
+![Screen Shot 2021-08-02 at 8 42 34 AM](https://user-images.githubusercontent.com/7098685/127871307-fe69d7ff-be75-4bd6-aaf2-09a9900bc363.png)
+
+### Equality using the == operator
+If you want a Set to treat two different Recipe objects as equal, or equivalent, you have two options: make Recipe a data class, or override the hashCode and equals functions it inherits from Any. Making Recipe a data class is easiest as it automatically overrides the two functions.
+
+In the following example, one value will be added to the Set if Recipe is a data class:
+```kotlin
+val a = Recipe("Thai Curry") 
+val b = Recipe("Thai Curry") 
+val set = setOf(a, b)
+```
+![Screen Shot 2021-08-02 at 8 45 06 AM](https://user-images.githubusercontent.com/7098685/127871666-7023360d-2015-4c6f-a1a3-f97b6dfbf1fd.png)
+
+## Rules for overriding hashCode and equals
+
+If you decide to manually override the hashCode and equals functions in your class instead of using a data class, there are a number of laws you must abide by. Failure to do so will make the Kotlin
+universe collapse because things like Sets won’t work properly, so make sure you follow them. Here are the rules:
+
+- If two objects are equal, they must have matching hash codes.
+- If two objects are equal, calling equals on either object must return true. In other words,
+if (a.equals(b)) then (b.equals(a)).
+- If two objects have the same hash code value, they are not required to be equal. But if
+they’re equal, they must have the same hash code value.
+- So, if you override equals, you must override hashCode.
+- The default behavior of the hashCode function is to generate a unique integer for each object. So if you don’t override hashCode in a non-data class, no two objects of that type
+can ever be considered equal.
+- The default behavior of the equals function is to do a === comparison, which tests
+whether the two references refer to a single object. So if you don’t override equals in a non-data class, no two objects can ever be considered equal since references to two different objects will always contain a different bit pattern.
+
+<i>
+a.equals(b) must also mean that a.hashCode() == b.hashCode()<br>
+But a.hashCode() == b.hashCode() does not have to mean that a.equals(b)
+</i>
