@@ -38,3 +38,73 @@ that reference the same object, but you can’t have duplicate keys.
 ![Screen Shot 2021-08-01 at 11 58 42 AM](https://user-images.githubusercontent.com/7098685/127865310-bdeafd28-b113-4fc6-a512-533fe24565f9.png)
 
 Simple Lists, Sets and Maps are immutable, which means that you can’t add or remove items after the collection has been initialized. If you want to be able to add or remove items, Kotlin has mutable subtypes that you can use instead: MutableList, MutableSet and MutableMap.
+
+## Fantastic Lists...
+![Screen Shot 2021-08-01 at 12 00 23 PM](https://user-images.githubusercontent.com/7098685/127865989-7744ae55-e2f2-4931-bcd3-17cb4bb62f0f.png)
+
+```kotlin
+  val shopping: List<String>
+  shopping = listOf("Tea", "Eggs", "Milk")
+```
+
+**...and how to use them**
+![Screen Shot 2021-08-01 at 12 02 27 PM](https://user-images.githubusercontent.com/7098685/127866115-8c7b2920-0d1c-41f9-acba-78e968feacb1.png)
+
+You can loop through all items in a List like so:
+```kotlin
+  for (item in shopping) println (item)
+```
+And you can also check whether the List contains a reference to a particular object, and retrieve its
+index:
+
+```kotlin
+if (shopping.contains("Milk")) { 
+  println(shopping.indexOf("Milk")) //Prints 2
+}
+```
+
+As you can see, using a List is a lot like using an array. The big difference, however, is that a List
+is immutable—you can’t update any of the references it stores.
+
+## Create a MutableList...
+
+you use the mutableListOf function instead:
+```kotlin
+  val mShopping = mutableListOf("Tea", "Eggs")
+```
+MutableList is a subtype of List, so you can call the same functions on a MutableList that you can
+on a List. The big difference, however, is that MutableLists have extra functions that you can use to add or remove values, or update or rearrange existing ones.
+
+![Screen Shot 2021-08-02 at 8 04 49 AM](https://user-images.githubusercontent.com/7098685/127866567-b4108b02-521b-4709-93c8-58ef4944bfe3.png)
+
+**..and add values to it**
+
+```koylin
+mShopping.add("Milk")
+mShopping.add(1, "Milk")
+```
+![Screen Shot 2021-08-02 at 8 06 21 AM](https://user-images.githubusercontent.com/7098685/127866752-00b08876-5b21-4b2c-a055-49fa9d8f7e00.png)
+
+**You can remove a value...**
+```kotlin
+if (mShopping.contains("Milk")) { 
+  mShopping.remove("Milk")
+}
+```
+
+The second way is to use the removeAt function to remove the value at a given index.
+```kotlin
+if (mShopping.size > 1) { 
+  mShopping.removeAt(1)
+}
+```
+![Screen Shot 2021-08-02 at 8 08 55 AM](https://user-images.githubusercontent.com/7098685/127867060-c8cae27d-fa1e-4d6a-afac-90cd509cfb57.png)
+
+**...and replace one value with another**
+```kotlin
+if (mShopping.size > 0) { 
+  mShopping.set(0, "Coffee")
+}
+```
+![Screen Shot 2021-08-02 at 8 10 11 AM](https://user-images.githubusercontent.com/7098685/127867203-94c83a88-4e64-4e53-a5a9-234629eeba78.png)
+
