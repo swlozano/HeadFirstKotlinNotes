@@ -100,3 +100,106 @@ parameter. The following code, for example, won’t compile because the compiler
 
 
 ## Use the right lambda for the variable’s type
+![Screen Shot 2021-08-02 at 4 30 53 PM](https://user-images.githubusercontent.com/7098685/127926511-f8eda8a6-ea6d-4216-a63e-a48850a52c0e.png)
+
+![Screen Shot 2021-08-02 at 4 32 42 PM](https://user-images.githubusercontent.com/7098685/127926567-c43af7e0-9f68-45a8-b293-9bdea67ff570.png)
+
+### Use Unit to say a lambda has no return value
+
+If you want to specify that a lambda has no return value, you can do so by declaring that its return type
+is Unit.
+
+```kotlin
+val myLambda: () -> Unit = { println("Hi!") }
+```
+
+```kotlin
+val calculation: (Int, Int) -> Unit = { x, y -> x + y }
+```
+
+## You can pass a lambda to a function
+
+<i>A function that uses a lambda as a parameter or return value is known as a higher-order function.</i>
+
+### Add a lambda parameter to a function by specifying its name and type
+
+![Screen Shot 2021-08-02 at 4 36 02 PM](https://user-images.githubusercontent.com/7098685/127926889-1c7f9b98-12de-4b9e-9fb4-8d513283a5f3.png)
+
+## Invoke the lambda in the function body
+
+Here’s the full code for the convert function:
+![Screen Shot 2021-08-02 at 4 37 19 PM](https://user-images.githubusercontent.com/7098685/127927008-5d4fd619-d3db-4937-b910-58e669508208.png)
+
+### Call the function by passing it parameter values
+![Screen Shot 2021-08-02 at 4 38 06 PM](https://user-images.githubusercontent.com/7098685/127927091-6eda1fe4-5ad3-4661-a60c-682d6f851299.png)
+
+## You can move the lambda OUTSIDE the ()’s...
+
+```kotlin
+convert(20.0, { c: Double -> c * 1.8 + 32 })
+```
+
+If the final parameter of a function you want to call is a lambda, as is the case with our convert function, you can move the lambda argument outside the function call’s parentheses.
+
+![Screen Shot 2021-08-02 at 4 40 55 PM](https://user-images.githubusercontent.com/7098685/127927345-5a2d450c-1304-4fa5-872a-a0cd2cd7f3c3.png)
+
+### ...or remove the ()’s entirely
+If you have a function that has just one parameter, and that parameter is a lambda, you can omit the parentheses entirely when you call the function.
+
+```kotlin
+fun convertFive(converter: (Int) -> Double) : Double { 
+  val result = converter(5)
+  println("5 is converted to $result")
+  return result
+}
+```
+
+![Screen Shot 2021-08-02 at 4 42 33 PM](https://user-images.githubusercontent.com/7098685/127927550-5d68a569-48ee-4781-aaff-7fcc476cedc6.png)
+
+## A function can return a lambda
+![Screen Shot 2021-08-02 at 4 43 51 PM](https://user-images.githubusercontent.com/7098685/127927745-d9cb9ecb-06ec-48dd-b22d-30a4f242e046.png)
+
+You can invoke the lambda returned by a function, or use it as an argument for another function. 
+![Screen Shot 2021-08-02 at 4 47 00 PM](https://user-images.githubusercontent.com/7098685/127928052-5150e2ff-dbb7-4b3e-bf78-162a7ca0da90.png)
+
+
+## Write a function that receives AND returns lambdas
+
+![Screen Shot 2021-08-02 at 4 47 48 PM](https://user-images.githubusercontent.com/7098685/127928224-20f9f60a-a0e9-47c6-be68-f31b80c5338e.png)
+
+
+### Define the parameters and return type
+![Screen Shot 2021-08-02 at 4 48 43 PM](https://user-images.githubusercontent.com/7098685/127928261-4764c4a9-f38a-45de-8c62-890aacbe08b1.png)
+
+### Define the function body
+![Screen Shot 2021-08-02 at 4 49 20 PM](https://user-images.githubusercontent.com/7098685/127928325-eae9b751-9c76-4968-9675-98ec859cfd3c.png)
+
+## How to use the combine function
+![Screen Shot 2021-08-02 at 4 49 59 PM](https://user-images.githubusercontent.com/7098685/127928384-de69098e-9b6c-4b69-b106-20809a950156.png)
+
+### You can make lambda code more readable
+
+![Screen Shot 2021-08-02 at 4 51 07 PM](https://user-images.githubusercontent.com/7098685/127928482-6db7b5ca-b8b3-4415-bba4-d32f91105424.png)
+
+## Use typealias to provide a different name for an existing type
+
+A type alias lets you provide an alternative name for an existing type, which you can then use in your code. This means that if your code uses a function type such as (Double) -> Double, you can define
+a type alias that’s used in its place, making your code more readable.
+
+![Screen Shot 2021-08-02 at 4 51 54 PM](https://user-images.githubusercontent.com/7098685/127928561-5d3d8279-7369-4797-986f-174ad7dbb7bd.png)
+
+
+This means that our convert and combine functions can now become:
+![Screen Shot 2021-08-02 at 4 52 23 PM](https://user-images.githubusercontent.com/7098685/127928595-6afcf06e-68d4-4bc0-bc1d-250d1f55c119.png)
+
+
+You can use typealias to provide an alternative name for any type, not just function types. You can, say, use:
+```kotlin
+typealias DuckArray = Array<Duck>
+```
+so that you can refer to the type DuckArray in place of Array<Duck>.
+  
+
+
+
+
