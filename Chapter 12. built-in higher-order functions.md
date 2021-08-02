@@ -72,5 +72,76 @@ Just like minBy and maxBy, you must provide sumBy and sumByDouble with a lambda 
   You can find out more about Kotlin’s filter family in the online documentation:
   <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html">https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index.html</a>
   
+## Use map to apply a transform to your collection  
+
+To see how this works, suppose you have a List<Int> that looks like this: 
+```kotlin
+val ints = listOf(1, 2, 3, 4)
+```
+If you wanted to create a new List<Int> that contains the same items multiplied by two, you could do so using the map function like this:
+  
+![Screen Shot 2021-08-02 at 5 51 35 PM](https://user-images.githubusercontent.com/7098685/127933303-db19915d-9f03-4469-8a94-834f634d370e.png)
+
+And you can also use map to create a new List containing the name of each Grocery item in groceries:
+ ![Screen Shot 2021-08-02 at 5 52 17 PM](https://user-images.githubusercontent.com/7098685/127933369-d9d711b4-bd11-42ca-985f-0412774d38d4.png)
+
+  ![Screen Shot 2021-08-02 at 5 52 43 PM](https://user-images.githubusercontent.com/7098685/127933399-6710485f-f154-49db-86de-830071dcaaf1.png)
+
+ 
+### You can chain function calls together 
+
+  ![Screen Shot 2021-08-02 at 5 53 39 PM](https://user-images.githubusercontent.com/7098685/127933464-28991033-1b1e-434d-9954-e083099eb7eb.png)
+
+## forEach works like a for loop
+
+```kotlin 
+for (item in groceries) { 
+  println(item.name)
+}
+```
+
+And here’s the equivalent code using the forEach function:
+  
+  ![Screen Shot 2021-08-02 at 5 54 59 PM](https://user-images.githubusercontent.com/7098685/127933577-e4679506-441b-4678-ac3e-3e37b8aa337f.png)
+
+  
+**As forEach is a function, you can use it in function call chains.**
+Imagine that you want to print the name of each item in groceries whose unitPrice is greater than
+3.0. To do this using a for loop, you could use the code:
+```kotlin
+for (item in groceries) {
+  if (item.unitPrice > 3.0) println(item.name)
+}
+``` 
+But you can do this more concisely using:
+
+```kotlin
+groceries.filter { it.unitPrice > 3.0 } .forEach { println(it.name) }  
+ ```
+
+## forEach has no return value
+
+Unlike other functions, however, the lambda’s body has a Unit return value. This means that you can’t
+use forEach to return the result of some calculation as you won’t be able to access it. There is, however, a workaround.
+  
+
+### Lambdas have access to variables 
+  
+As you already know, a for loop’s body has access to variables that have been defined outside the loop. The following code, for example, defines a String variable named itemNames, which is then updated in a for loop’s body:
+  
+ ![Screen Shot 2021-08-02 at 5 59 20 PM](https://user-images.githubusercontent.com/7098685/127933891-b005ef51-5bb5-4a70-9ce5-521a370a3729.png)
+
+  When you pass a lambda to a higher-order function such as forEach, the lambda has access to these same variables, even though they’ve been defined outside the lambda. This means that instead of
+using the forEach function’s return value to get the result of some calculation, you can update a variable from inside the lambda body. The following code, for example, is valid:
+
+  ![Screen Shot 2021-08-02 at 6 00 00 PM](https://user-images.githubusercontent.com/7098685/127933936-36cb66b0-735a-4a5c-b623-47f13d556109.png)
+
+  The variables defined outside the lambda which the lambda can access are sometimes referred to as
+the lambda’s closure. In clever words, we say that the lambda can access its closure.
+  
+  <i> Closure means that a lambda can access any local variables that it captures.</i>
+ 
+## Use groupBy to split your collection into groups
+  
   
   
