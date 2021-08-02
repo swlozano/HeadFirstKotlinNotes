@@ -22,12 +22,12 @@ If your code relies on the array not changing, this may be a source of bugs in y
 
 ## Collections
 
-## List, Set and Map
+## List, Set and Map
 
 ### List - when sequence matters
 ![Screen Shot 2021-08-01 at 11 57 01 AM](https://user-images.githubusercontent.com/7098685/127865126-718d0d43-005f-4782-ab6e-8f7da3350a80.png)
 
-### Set - when uniqueness matters
+### Set - when uniqueness matters
 A Set doesn’t allow duplicates, and doesn’t care about the order in which values are held.
 ![Screen Shot 2021-08-01 at 11 57 57 AM](https://user-images.githubusercontent.com/7098685/127865227-6a7ede6f-25a9-4cf3-b19f-87df23ea8247.png)
 
