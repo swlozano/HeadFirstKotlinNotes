@@ -108,3 +108,31 @@ if (mShopping.size > 0) {
 ```
 ![Screen Shot 2021-08-02 at 8 10 11 AM](https://user-images.githubusercontent.com/7098685/127867203-94c83a88-4e64-4e53-a5a9-234629eeba78.png)
 
+## You can change the order and make bulk changes...
+
+![Screen Shot 2021-08-02 at 8 19 14 AM](https://user-images.githubusercontent.com/7098685/127868240-814651d1-c677-4f9f-8efa-2864d92aa17b.png)
+
+Or you can use the shuffle function to randomize it: 
+```kotlin
+mShopping.shuffle()
+```
+
+And there are useful functions for making bulk changes to the MutableList too. You can, for example, use the addAll function to add all the items that are held in another collection. 
+
+```kotlin
+val toAdd = listOf("Cookies", "Sugar") 
+mShopping.addAll(toAdd)
+```
+
+The removeAll function removes items that are held in another collection: 
+```kotlin
+  val toRemove = listOf("Milk", "Sugar")
+  mShopping.removeAll(toRemove)
+```
+
+And the retainAll function retains all the items that are held in another collection and removes
+everything else:
+```kotlin
+val toRetain = listOf("Milk", "Sugar") 
+mShopping.retainAll(toRetain)
+```
