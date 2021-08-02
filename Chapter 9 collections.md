@@ -136,3 +136,15 @@ everything else:
 val toRetain = listOf("Milk", "Sugar") 
 mShopping.retainAll(toRetain)
 ```
+
+You can also use the clear function to remove every item like this:
+![Screen Shot 2021-08-02 at 8 23 37 AM](https://user-images.githubusercontent.com/7098685/127868833-b93a172e-e6d2-4083-a579-59cd8166b7ac.png)
+
+**...or take a copy of the entire MutableList**
+It can sometimes be useful to copy a List, or MutableList, so that you can save a snapshot of its state. You can do this using the toList function. 
+
+```kotlin
+val shoppingCopy = mShopping.toList()
+```
+
+The toList function returns a List, not a MutableList, so shoppingCopy can’t be updated. 
