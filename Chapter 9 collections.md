@@ -251,4 +251,137 @@ You can also copy a Set or MutableSet into a new List object using toList:
 And if you have a MutableList or List, you can copy it into a Set using its toSet function:
   ```kotlin
 val shoppingSet = mShopping.toSet()  
+```
+You can, for example, check whether a List contains
+duplicate values by copying the List into a Set, and checking the size of each collection. The
+following code uses this technique to check whether mShopping (a MutableList) contains duplicates:
+![Screen Shot 2021-08-02 at 8 56 57 AM](https://user-images.githubusercontent.com/7098685/127873275-d6a3e665-6bad-458a-a3a3-219ae3ea3764.png)
+
+  ![Screen Shot 2021-08-02 at 8 57 41 AM](https://user-images.githubusercontent.com/7098685/127873381-5ff60df6-e092-41de-992a-48c292a8ef2d.png)
+
+## Time for a Map
+Each entry in a Map is actually two objects—a key and a value. Each key has a single value associated with it. You can have duplicate values, but you can’t have duplicate keys.
+ ![Screen Shot 2021-08-02 at 8 59 09 AM](https://user-images.githubusercontent.com/7098685/127873575-c1857a35-c0ba-46d2-b236-3afae3fc0419.png)
+ 
+### How to create a Map
+
+You create a Map by calling a function named mapOf, passing in the key/value pairs you want the Map to be initialized with. 
+![Screen Shot 2021-08-02 at 9 00 26 AM](https://user-images.githubusercontent.com/7098685/127873732-44302f96-f177-4c28-a510-0078b90bd945.png)
+
+You can also explicitly define the Map’s type using code like this:
+```kotlin  
+val recipeMap: Map<String, Recipe>
+```
+In general, the Map’s type takes the form:
+ ```kotlin
+Map<key_type, value_type>
+ ```
+ ![Screen Shot 2021-08-02 at 9 02 03 AM](https://user-images.githubusercontent.com/7098685/127873930-8f9cf36c-ed92-42fb-b22c-f1379ca6f42b.png)
+
+## How to use a Map
   
+You check whether a Map contains a particular key or value using its containsKey and containsValue functions. The following code, for example, checks whether the Map named recipeMap contains the key “Recipe1”:
+```kotlin
+recipeMap.containsKey("Recipe1")
+```
+And you can find out whether recipeMap contains a Recipe for Chicken Soup using the containsValue function like this:
+ ![Screen Shot 2021-08-02 at 9 03 48 AM](https://user-images.githubusercontent.com/7098685/127874180-e6e0541b-4f65-430d-9c0f-282d78c7b5c9.png)
+
+  You can get the value for a specified key using the get and getValue functions. get returns a null value if the specified key doesn’t exist, whereas getValue throws an exception.
+  
+  ![Screen Shot 2021-08-02 at 9 04 37 AM](https://user-images.githubusercontent.com/7098685/127874274-79d692b2-4148-4da9-9b67-904c6d9fc283.png)
+
+ You can also loop through a Map’s entries. Here’s how, for example, you would use a for loop to print each key/value pair in recipeMap:
+  ```kotlin
+for ((key, value) in recipeMap) { 
+  println("Key is $key, value is $value")
+} 
+ ```
+## Create a MutableMap
+
+The following code, for example, creates a MutableMap
+with three entries, as before:
+```kotlin  
+val r1 = Recipe("Chicken Soup") 
+val r2 = Recipe("Quinoa Salad")
+val mRecipeMap = mutableMapOf("Recipe1" to r1, "Recipe2" to r2)  
+ ```
+The MutableMap is initialized with String keys and Recipe values, so the compiler infers that it must be a MutableMap of type MutableMap<String, Recipe>.
+  
+MutableMap is a subtype of Map, so you can call the same functions on a MutableMap that you can on a Map. A MutableMap, however, has extra functions that you can use to add, remove and update
+key/value pairs.
+  
+  ![Screen Shot 2021-08-02 at 9 07 07 AM](https://user-images.githubusercontent.com/7098685/127874581-4c8ad475-4b45-4511-9ce2-6da1ccc97cfd.png)
+
+### Put entries in a MutableMap
+![Screen Shot 2021-08-02 at 9 07 48 AM](https://user-images.githubusercontent.com/7098685/127874679-b088d939-782d-49b2-aded-249b73fbbcbb.png)
+
+
+If the MutableMap already contains the specified key, the put function replaces the value for that key, and returns the original value.
+  
+You can put many key/value pairs into the MutableMap at once using the putAll function. This takes one argument, a Map containing the entries you want to add
+  
+```kotlin  
+val r4 = Recipe("Jambalaya")
+val r5 = Recipe("Sausage Rolls")
+val recipesToAdd = mapOf("Recipe4" to r4, "Recipe5" to r5) mRecipeMap.putAll(recipesToAdd)  
+ ```
+### You can remove entries from a MutableMap
+
+  The first way is to pass to the remove function the key whose entry you want to remove
+  
+  ![Screen Shot 2021-08-02 at 9 10 20 AM](https://user-images.githubusercontent.com/7098685/127875113-4e192f24-5901-49f7-aad7-c44b74a74906.png)
+
+  The second way is to pass the remove function the key name and a value.
+  
+![Screen Shot 2021-08-02 at 9 10 27 AM](https://user-images.githubusercontent.com/7098685/127875133-5d577fb5-6ef0-470d-837a-d5bf597cfc1b.png)
+
+ Finally, you can use the clear function to remove every entry from the MutableMap, just as you can with MutableLists and MutableSets:
+  
+  ![Screen Shot 2021-08-02 at 9 12 19 AM](https://user-images.githubusercontent.com/7098685/127875306-9eb7c7f0-7718-4cc9-9074-83647b60648c.png)
+ 
+## You can copy Maps and MutableMaps  
+
+  You can use the toMap function, for example, to take a read-only copy of mRecipeMap, and assign the copy to
+a new variable:
+ ```kotlin 
+  val recipeMapCopy = mRecipeMap.toMap()
+ ```
+ You can copy a Map or MutableMap into a new List object containing all the key/value pairs using
+toList like this:
+```kotlin
+val RecipeList = mRecipeMap.toList() 
+```
+  
+   The entries property returns a Set if it’s used with a Map, and returns a MutableSet if it’s used with a
+MutableMap. The following code, for example, returns a MutableSet of mRecipeMap’s key/value pairs:
+```kotlin  
+val recipeEntries = mRecipeMap.entries
+```
+
+Other useful properties are keys (which returns a Set, or MutableSet, of the Map’s keys), and values (which returns a generic collection of the Map’s values). You can use these properties to, say, check whether a Map contains duplicate values using code like this:
+ ```kotlin 
+ if (mRecipeMap.size > mRecipeMap.values.toSet().size) { 
+  println("mRecipeMap contains duplicates values")
+} 
+ ```
+  
+This is because the code:
+ ```kotlin 
+mRecipeMap.values.toSet()
+  ```
+copies the Map’s values into a Set, which removes any duplicate values.  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
