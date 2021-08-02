@@ -216,3 +216,39 @@ whether the two references refer to a single object. So if you don’t override 
 a.equals(b) must also mean that a.hashCode() == b.hashCode()<br>
 But a.hashCode() == b.hashCode() does not have to mean that a.equals(b)
 </i>
+
+## How to use a MutableSet
+
+You define a MutableSet using the mutableSetOf function like this: 
+<br>
+val mFriendSet = mutableSetOf("Jim", "Sue")
+<br>
+
+This initializes a MutableSet with two Strings, so the compiler infers that you want a MutableSet of type MutableSet<String>.
+  ![Screen Shot 2021-08-02 at 8 50 31 AM](https://user-images.githubusercontent.com/7098685/127872359-1795405c-c4ab-4b81-bece-873811a0b050.png)
+
+You remove values from a MutableSet using the remove function. The following code, for example, removes “Nick” from mFriendSet:
+<br>
+mFriendSet.remove("Nick")
+<br>  
+You can also use the addAll, removeAll and retainAll functions to make bulk changes to the
+MutableSet, just as you can for a MutableList. The addAll function, for example, adds all the items to the MutableSet that are held in another collection, so you can use the following code to add “Joe” and “Mia” to mFriendSet:
+
+  ![Screen Shot 2021-08-02 at 8 52 32 AM](https://user-images.githubusercontent.com/7098685/127872723-c2eae1a0-db1a-4603-83af-c71390acbd66.png)
+
+## You can copy a MutableSet
+
+If you want to take a snapshot of a MutableSet you can do so, just as you can with a MutableList. You can use the toSet function, for example, to take an immutable copy of mFriendSet, and assign the copy to a new variable named friendSetCopy:
+  
+```kotlin
+ val friendSetCopy = mFriendSet.toSet()
+```  
+
+You can also copy a Set or MutableSet into a new List object using toList:
+```kotlin
+  val friendList = mFriendSet.toList()
+```
+And if you have a MutableList or List, you can copy it into a Set using its toSet function:
+  ```kotlin
+val shoppingSet = mShopping.toSet()  
+  
