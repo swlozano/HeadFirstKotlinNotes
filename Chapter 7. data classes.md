@@ -77,7 +77,8 @@ Every data class must have a primary constructor, which must define at least one
 ![Screen Shot 2021-08-03 at 4 31 59 PM](https://user-images.githubusercontent.com/7098685/128089118-9025a6ec-80f7-47d1-9b60-751075151ac7.png)
 
 ### SECONDARY CONSTRUCTORS
-![Screen Shot 2021-08-03 at 4 33 19 PM](https://user-images.githubusercontent.com/7098685/128089285-77b2793d-4af7-4850-89df-b170eb618a01.png)
+![Screen Shot 2021-08-03 at 4 33 24 PM](https://user-images.githubusercontent.com/7098685/128089739-6c37dd54-c9ed-4ac2-8f11-255bdf5d0d2f.png)
+
 
 ## Functions can use default values too
 
