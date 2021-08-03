@@ -113,7 +113,7 @@ while (!isBroken) {
 }
 ```
 
-### Use parentheses to make your code clear
+### Use parentheses to make your code clear
 
 ```kotlin
 if ((price <= 500 && memory >= 16) || (price <= 750 && memory >= 32) || (price <= 1000 && memory >= 64)) { 
