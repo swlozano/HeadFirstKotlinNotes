@@ -119,11 +119,17 @@ As each animal is a subclass of Animal, we can simply add each one to an array, 
 If you can declare a variable of a supertype (say, Animal), and assign a subclass object to it (say,
 Wolf), what do you think might happen when you use a subtype as an argument to a function? Suppose, for example, that we create a Vet class with a function named giveShot:
 
+![Screen Shot 2021-08-03 at 3 19 15 PM](https://user-images.githubusercontent.com/7098685/128080584-65e9998a-b533-4f03-9228-4b4821b0bd4b.png)
+
+The Animal parameter can take any Animal type as the argument. So when the Vet’s giveShot function is called, it executes the Animal’s makeNoise function, and whatever type of Animal it is
+will respond:
+
+![Screen Shot 2021-08-03 at 3 19 48 PM](https://user-images.githubusercontent.com/7098685/128080647-c36b598b-804d-4f94-9be9-dec2fbbf464b.png)
+
+Being able to use one type of object in a place that explicitly expects a different type is called polymorphism. It’s the ability to provide different implementations for functions that have been inherited from somewhere else.
 
 
-
-
-
+<i>Polymorphism means “many forms”. It allows different subclasses to have different implementations of the same function.</i>
 
 
 
