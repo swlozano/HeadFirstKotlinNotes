@@ -143,5 +143,29 @@ the lambda’s closure. In clever words, we say that the lambda can access its c
  
 ## Use groupBy to split your collection into groups
   
+ This function lets you group the items in your collection according to some criteria, such as the value of one of its properties
   
+The groupBy function accepts one parameter, a lambda, which you use to specify how the function should group the items in the collection.
   
+  ![Screen Shot 2021-08-02 at 9 16 29 PM](https://user-images.githubusercontent.com/7098685/127947091-cd6f83c5-8d67-459d-b52c-39fd7c217c2f.png)
+
+ groupBy returns a Map. It uses the criteria passed via the lambda body for the keys, and each associated value is a List of items from the original collection. The above code, for example, creates a Map whose keys are the Grocery item category values, and each value is a List<Grocery>:
+  
+  ![Screen Shot 2021-08-02 at 9 17 40 PM](https://user-images.githubusercontent.com/7098685/127947166-888c835d-9ec2-4b96-b017-e68ef2d6899d.png)
+
+  ## You can use groupBy in function call chains
+![Screen Shot 2021-08-02 at 9 18 09 PM](https://user-images.githubusercontent.com/7098685/127947215-a40bd8f3-067e-4b09-b78c-e624470d9dd4.png)
+
+  As the groupBy function uses the Grocery category values for its keys, we can print them by passing the code println(it.key) to the forEach function in its lambda:
+  
+  ![Screen Shot 2021-08-02 at 9 18 56 PM](https://user-images.githubusercontent.com/7098685/127947277-ba27b541-1629-4d24-a90c-a02d1f64dd14.png)
+
+  And as each of the Map’s values is a List<Grocery>, we can make a further call to forEach in order to print the name of each grocery item
+  
+![Screen Shot 2021-08-02 at 9 19 46 PM](https://user-images.githubusercontent.com/7098685/127947348-1e24ff31-68b8-42d9-943e-5fa94ef6ff1c.png)
+  
+## How to use the fold function
+  The fold function is arguably Kotlin’s most flexible higher-order function. With fold, you can specify an initial value, and perform some operation on it for each item in a collection.
+  ![Screen Shot 2021-08-02 at 9 21 03 PM](https://user-images.githubusercontent.com/7098685/127947476-ec53801d-ebf9-436c-9895-39f875324108.png)
+  
+
