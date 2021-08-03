@@ -51,4 +51,60 @@ If you wanted to retrieve the value of the object’s first property (its title 
 == checks for object equivalence.<br>
 === checks for object identity.
   </i>
-  
+
+## Generated functions only use properties defined in the constructor
+
+![Screen Shot 2021-08-03 at 4 29 03 PM](https://user-images.githubusercontent.com/7098685/128088773-61f1a8b8-acb6-4dba-80c7-6eb91e6d27c0.png)
+![Screen Shot 2021-08-03 at 4 29 11 PM](https://user-images.githubusercontent.com/7098685/128088786-ac263f5c-e887-42e5-bee2-697743f0efed.png)
+
+he == operator will only look at the title and isVegetarian properties to determine if the two objects are equal because only these properties have been defined in the data class constructor. If the
+two objects have different values for the mainIngredient property (as in the above example), the equals function won’t look at this property when considering whether two objects are equal.
+
+## Initializing many properties can lead to cumbersome code
+
+Every data class must have a primary constructor, which must define at least one parameter. Each parameter must be prefixed with val or var.
+
+
+### Default parameter values to the rescue!
+
+![Screen Shot 2021-08-03 at 4 30 48 PM](https://user-images.githubusercontent.com/7098685/128088975-13105c52-bf14-494a-a61d-e226910bc2f4.png)
+
+### How to use a constructor’s default values
+
+
+1. Passing values in order of declaration
+2. Using named arguments
+![Screen Shot 2021-08-03 at 4 31 59 PM](https://user-images.githubusercontent.com/7098685/128089118-9025a6ec-80f7-47d1-9b60-751075151ac7.png)
+
+### SECONDARY CONSTRUCTORS
+![Screen Shot 2021-08-03 at 4 33 19 PM](https://user-images.githubusercontent.com/7098685/128089285-77b2793d-4af7-4850-89df-b170eb618a01.png)
+
+## Functions can use default values too
+
+![Screen Shot 2021-08-03 at 4 34 05 PM](https://user-images.githubusercontent.com/7098685/128089384-819711ec-6592-4755-a3ac-02359b211642.png)
+
+## Overloading a function
+Function overloading is when you have two or more functions with the same name but with different argument lists.
+
+```kotlin
+fun addNumbers(a: Int, b: Int) : Int { 
+  return a + b
+}
+```
+
+![Screen Shot 2021-08-03 at 4 35 41 PM](https://user-images.githubusercontent.com/7098685/128089536-6d5b65df-7f53-4664-8354-0f109c1bbab8.png)
+
+<i>An overloaded function is just a different function that happens to have the same function name
+with different arguments. An overloaded function is NOT the same as an overridden function.</i>
+
+**Dos and don’ts for function overloading:**
+1. * The return types can be different.
+2. * You can’t change ONLY the return type.
+
+
+
+
+
+
+
+
